@@ -1,0 +1,35 @@
+<?php include __DIR__ . '/header.phtml'; ?>
+
+<main>
+    <div class="d-flex justify-content-center align-items-center flex-grow-1">
+        <div class="mt-5 px-4 py-4 shadow-lg">
+            <h2 class="page-title text-center">Connexion</h2>
+
+            <?php if (!empty($_SESSION['login_error'])): ?>
+                <div class="alert alert-danger text-center">
+                    <?= htmlspecialchars($_SESSION['login_error']) ?>
+                </div>
+                <?php unset($_SESSION['login_error']); ?>
+            <?php endif; ?>
+
+            <form id="connexionForm" method="POST" action="connexion-form.php">
+                <div class="mb-3">
+                    <label for="EmailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr" name="Email"> 
+                </div>
+                <div class="mb-3">
+                    <label for="PasswordInput" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="PasswordInput" name="Password">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-connexion">Connexion</button>
+                </div>
+            </form>
+            <div class="text-center pt-3">
+                <p>Vous n’avez pas de compte ? <a class="form-link" href="inscription.php">Inscrivez-vous ici !</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<?php include __DIR__ . '/footer.phtml'; ?>
